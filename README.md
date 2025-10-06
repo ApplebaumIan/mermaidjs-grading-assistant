@@ -1,5 +1,13 @@
 # MermaidJS UML Grading Assistant
 
+<center>
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ApplebaumIan/mermaidjs-grading-assistant)
+[![Open in Dev Container](https://img.shields.io/badge/Open%20in-Dev%20Container-blue?logo=visualstudiocode)](https://code.visualstudio.com/docs/remote/containers)
+[![Open in Jetbrains](https://img.shields.io/badge/Open%20in-JetBrains-blue?logo=jetbrains)](https://www.jetbrains.com/help/idea/connect-to-devcontainer.html)
+
+</center>
+
 This repository contains a simple grading assistant for UML diagrams created using MermaidJS. The program renders student's UML written in MermaidJS Markdown provided from a CanvasLMS quiz results CSV. As long as the student added their mermaidjs markdown in the essay response field this program can render it!
 
 ```shell
