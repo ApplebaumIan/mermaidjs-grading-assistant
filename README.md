@@ -1,12 +1,12 @@
 # MermaidJS UML Grading Assistant
 
-This repository contains a simple grading assistant for UML diagrams created using MermaidJS. The program renders student's UML written in MermaidJS Markdown provided from a CanvasLMS quiz results CSV.
+This repository contains a simple grading assistant for UML diagrams created using MermaidJS. The program renders student's UML written in MermaidJS Markdown provided from a CanvasLMS quiz results CSV. As long as the student added their mermaidjs markdown in the essay response field this program can render it!
 
 ```shell
-python process_quiz_data.py ./data/{YOUR_CSV_FILE}.csv {ROW_NUMBER}
+python process_quiz_data.py ./data/{YOUR_CSV_FILE}.csv {COLUMN_NUMBER_1} {COLUMN_NUMBER_2} ...
 ```
 
-After running the command, the program will generate markdown files per student in the `mermaid_diagrams` directory. Each file will contain the student's name as the filename, and their UML diagram rendered in MermaidJS format.
+After running the command, the program will generate one markdown file per student in the `mermaid_diagrams` directory. Each file will contain the student's name as the filename, and all their UML diagrams from the specified columns, rendered in MermaidJS format under the appropriate question heading.
 
 ## Prerequisites
 - Python 3.x
@@ -21,10 +21,20 @@ All of which are available in the provided devcontainer.json for VSCode and Jetb
 2. Open the repository in VSCode or Jetbrains IDE.
 3. If using VSCode, open the command palette (Ctrl+Shift+P) and select "Remote-Containers: Open Folder in Container...". If using Jetbrains, open the project and ensure the Docker plugin is enabled.
 4. Open a terminal in the IDE.
-5. Run the provided command with your CSV file and the row number containing the MermaidJS UML diagrams.
+5. Run the provided command with your CSV file and the column numbers containing the MermaidJS UML diagrams. You can list multiple column numbers separated by spaces.
 6. Check the `mermaid_diagrams` directory for the generated markdown files.
 
 **If using GitHub Codespaces, simply open the repository in a new codespace and follow steps 4-6.**
+
+### Rendering as an Image (Optional)
+
+To render the diagrams as images using the `mermaid.ink` service, you can use the `--render-url` flag. This is useful for sharing or for platforms that do not support MermaidJS rendering.
+
+```shell
+python process_quiz_data.py ./data/{YOUR_CSV_FILE}.csv {COLUMN_NUMBER_1} {COLUMN_NUMBER_2} ... --render-url
+```
+
+This will generate markdown files containing a link to the rendered image for each specified column, along with the raw MermaidJS code for grading purposes.
 
 ### Full Manual Install Process without devcontainer (if needed)
 1. Ensure you have Python 3.x installed on your machine.
@@ -34,6 +44,6 @@ All of which are available in the provided devcontainer.json for VSCode and Jetb
    ```
 3. Clone the repository to your local machine.
 4. Open a terminal and navigate to the cloned repository.
-5. Run the provided command with your CSV file and the row number containing the MermaidJS UML diagrams.
+5. Run the provided command with your CSV file and the column numbers containing the MermaidJS UML diagrams.
 6. Check the `mermaid_diagrams` directory for the generated markdown files.
 7. Use a Markdown viewer that supports MermaidJS to view the rendered diagrams.
