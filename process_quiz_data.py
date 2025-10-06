@@ -18,8 +18,6 @@ def clean_mermaid_code(raw_code):
     # Remove ```mermaid and ```
     code = re.sub(r'```mermaid', '', code)
     code = re.sub(r'```', '', code)
-    # Remove classDiagram case-insensitively
-    code = re.sub(r'classDiagram', '', code, flags=re.IGNORECASE)
     # Trim leading/trailing whitespace
     return code.strip()
 
@@ -79,8 +77,8 @@ def main():
                 # Add a subheading for the question/column
                 file_content += f"### Question: {column_name}\n\n"
 
-                # Create the full mermaid diagram content
-                mermaid_diagram_code = f"classDiagram\n{cleaned_code}"
+                # The cleaned code should contain the diagram type
+                mermaid_diagram_code = cleaned_code
 
                 if args.render_url:
                     # Base64 encode the mermaid code
